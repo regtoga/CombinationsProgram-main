@@ -24,7 +24,7 @@ def accumulator():
 #essentially an infinite loop
 while x != "stop":
     #applies an input to the variable x
-    x = input("what number: ")
+    x = input("Enter a number ('stop' to stop, 'calc' to calculate, 'list' to use predefined list): ")
 
     if x != "stop" and x != "calc" and x != "list":
         #while "x" is not equle to stop or calc all inputs will be entered into a list though the accumulator funciton
@@ -67,16 +67,21 @@ while x != "stop":
 
                 #------------------------------------------------------------------
                     #SHOULD check to see if the answer is allready in the list and if it is it SHOULD remove the last known version of it.
-                    for j in range(0, len(answers)):   
-                            if str(answers[j]) == str(totalComp):
-                                exists = True
+                    
+                    for j in range(0, len(answers)):
+                        #print("")
+                        #print(answers[j])
+                        #print(totalComp)
+                        #print("")
+                        if str(answers[j]) == str(totalComp):
+                            exists = True
                     if exists == False:
                         #add the list of numbers to the answers list
 
                         TempList = []
 
-                        for items in range(0, len(answers)):
-                            TempList += answers[items]
+                        for items in range(0, len(totalComp)):
+                            TempList.append(totalComp[items])
 
                         answers += [TempList]
 
