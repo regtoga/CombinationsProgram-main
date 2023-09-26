@@ -1,5 +1,4 @@
 import itertools
-import re
 
 #initializes variables
 ListOfNumbers = []
@@ -10,12 +9,13 @@ total = 0
 mewant = 0
 exists = False
 
+
+
 #special variable that is just for the guy who owns the program
 HardList = [62, 100, 82, 78, 61, 101, 73, 64, 216, 98, 80, 65]
 
 #function used to append "x" to the end of a list.
 def accumulator():
-    
     ListOfNumbers.append(x)
     
     print(ListOfNumbers)
@@ -65,36 +65,28 @@ while x != "stop":
                 #depending on if the total equals the one the user wants it will explain what it got and how it got it.
                 if int(total) == int(mewant):
 
-                #------------------------------------------------------------------
-                    #SHOULD check to see if the answer is allready in the list and if it is it SHOULD remove the last known version of it.
+                    #SHOULD check to see if the answer is allready in the list and if it is it SHOULD remove the last known version of it:
                     
+                    #checks if anything in answers is == to anything allready in totalComp
                     for j in range(0, len(answers)):
-                        #print("")
-                        #print(answers[j])
-                        #print(totalComp)
-                        #print("")
                         if str(answers[j]) == str(totalComp):
                             exists = True
+                    # if the answer was allready in the answers list it will skip appending it to the answers list and not print the result
                     if exists == False:
-                        #add the list of numbers to the answers list
-
+                        #Makes a templist for a reason that i cant remember, esentially i couldnt get an item to simply append to the answers list
+                        #instead it forwhatever reason always shared the same memory space. After making a new list and appending it instead it actually worked
                         TempList = []
 
                         for items in range(0, len(totalComp)):
                             TempList.append(totalComp[items])
 
+                        #adds the computed answer into the answers list
                         answers += [TempList]
 
                         #outputs the answers
                         print("these numbers: " + str(totalComp) + " added up to " + str(total) + ".")
-                    
+                    #resets exists to false so that by default it is false
                     exists = False
-                #-------------------------------------------------------------------
-
-            # printing total value
-            # print("Sum of all list: ", total)
-
-        print(len(combinations))
 
         exit()
 
