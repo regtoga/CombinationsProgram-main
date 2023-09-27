@@ -16,18 +16,19 @@ HardList = [62, 100, 82, 78, 61, 101, 73, 64, 216, 98, 80, 65]
 class fileArchitect():
     """This class holds a bunch of functions for manipulaing files"""
 
+    #Define Self variables
     def __init__(self):
         self.localfilename = ""
     
     def Create_File(self, locationfromuser: str, filenamefromuser: str, answerstxt: list, mewanttxt: int) -> str:
-        """Creates files using the arguments, then """
+        """Creates a file using the arguments, and makes a global name for the file so other blocks can access it"""
         try:
             if filenamefromuser == "" and locationfromuser == "":
                 #create a file object
                 Author = open(f"./{len(answerstxt)}_answers_equled_{mewanttxt}.txt", "x")
                 self.localfilename = f".\{len(answerstxt)}_answers_equled_{mewanttxt}.txt"
                 #print(f"Created file {len(answerstxt)}_equled_{mewanttxt}.txt in Downloads")
-                return f"Created file {len(answerstxt)}_answers_equled_{mewanttxt}.txt in whatever location you ran this"
+                return f"Created file {len(answerstxt)}_answers_equled_{mewanttxt}.txt in whatever location you ran this."
             else:
                 Author = open(f"{locationfromuser}{filenamefromuser}.txt", "x")
                 self.localfilename = f"{locationfromuser}{filenamefromuser}.txt"
@@ -38,25 +39,29 @@ class fileArchitect():
             return "Critical Failure"
         #Close Author object
         Author.close()
-        
+
+    #function containging code about how to write a file   
     def Write_File(self, answerstxt: list) -> str:
+        """Using a list parametere this function will write it to the file defined in the create file function"""
         try:
             Author = open(self.localfilename, "w")
             Author.write(str(answerstxt)) 
             Author.close()
             return "Success!"
         except:
-            print("Something Went wrong when writing file")
+            print("Something Went wrong when writing the file")
             return "Critical Failure"
 
+    #function containging code about how to read a file
     def Read_File(self) -> str:
+        """Returns a string containing all the information on the file"""
         try:
             Author = open(self.localfilename, "r")
             _contents = Author
             Author.close()
             return _contents
         except:
-            print("Something Went wrong when writing file")
+            print("Something Went wrong when reading the file")
             return "Critical Failure"
 
 # makes FileArchitect object
